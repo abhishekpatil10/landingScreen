@@ -1,0 +1,156 @@
+<div class="container-fluid main-body">
+  <div class="main-container">
+    <div class="col-12 col-md-6 image-container">
+      <div class="images-group d-flex flex-row">
+      <div class="d-flex flex-column img-group img-group-1" #imgGroup1>
+        <div class="img">
+          <img src="https://source.unsplash.com/random/200x300" alt="">
+        </div>
+        <div class="img">
+          <img src="https://source.unsplash.com/random/200x300" alt="">
+        </div>
+        <div class="img">
+          <img src="https://source.unsplash.com/random/200x300" alt="">
+        </div>
+        <div class="img">
+          <img src="https://source.unsplash.com/random/200x300" alt="">
+        </div>
+      </div>
+      <div class="d-flex flex-column img-group img-group-2" #imgGroup2>
+        <div class="img">
+          <img src="https://source.unsplash.com/random/200x300" alt="">
+        </div>
+        <div class="img">
+          <img src="https://source.unsplash.com/random/200x300" alt="">
+        </div>
+        <div class="img">
+          <img src="https://source.unsplash.com/random/200x300" alt="">
+        </div>
+        <div class="img">
+          <img src="https://source.unsplash.com/random/200x300" alt="">
+        </div>
+      </div>
+      <div class="d-flex flex-column img-group img-group-3" #imgGroup3>
+        <div class="img">
+          <img src="https://source.unsplash.com/random/200x300" alt="">
+        </div>
+        <div class="img">
+          <img src="https://source.unsplash.com/random/200x300" alt="">
+        </div>
+        <div class="img">
+          <img src="https://source.unsplash.com/random/200x300" alt="">
+        </div>
+        <div class="img">
+          <img src="https://source.unsplash.com/random/200x300" alt="">
+        </div>
+      </div>
+    </div>
+    </div>
+    <div class="col-12 col-md-6 form-container">
+      <div class="header">
+        <div class="progress-bar">
+          <div class="progress-fill" style="width: 50%;"></div>
+        </div>
+        <div class="header-text">
+          Before we proceed
+          <div class="sub-header">
+            Some basic details about your eduction
+          </div>
+        </div>
+      </div>
+      <div class="form-area">
+        <form [formGroup]="collegeForm" class="profile-form">
+          <!-- <mat-form-field appearance="fill">
+            <mat-label>College Name</mat-label>
+            <input
+              type="text"
+              matInput
+              formControlName="collegeName"
+              [matAutocomplete]="auto">
+            <mat-autocomplete #auto="matAutocomplete">
+              <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+                {{ option }}
+              </mat-option>
+            </mat-autocomplete>
+          </mat-form-field> -->
+          <mat-form-field appearance="fill">
+            <mat-icon matPrefix>school</mat-icon>
+            <!-- <img matPrefix src="../../../assets/images/college-icon.svg" alt="College Icon" style="width: 24px; height: 24px; margin-left: 8px; margin-right: 8px;"> -->
+            <mat-label>College Name</mat-label>
+            <input
+              type="text"
+              matInput
+              formControlName="collegeName"
+              [matAutocomplete]="auto">
+            <mat-autocomplete #auto="matAutocomplete">
+              <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+                {{ option }}
+              </mat-option>
+            </mat-autocomplete>
+          </mat-form-field>
+
+          <mat-form-field appearance="fill">
+            <mat-icon matPrefix>location_city</mat-icon>
+            <mat-label>College City</mat-label>
+            <input
+              type="text"
+              matInput
+              formControlName="collegeCity"
+              [matAutocomplete]="auto">
+            <mat-autocomplete #auto="matAutocomplete">
+              <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+                {{ option }}
+              </mat-option>
+            </mat-autocomplete>
+          </mat-form-field>
+          <mat-form-field appearance="fill">
+            <mat-icon matPrefix>location_on</mat-icon>
+            <mat-label>College State</mat-label>
+            <input
+              type="text"
+              matInput
+              formControlName="collegeState"
+              [matAutocomplete]="auto">
+            <mat-autocomplete #auto="matAutocomplete">
+              <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+                {{ option }}
+              </mat-option>
+            </mat-autocomplete>
+          </mat-form-field>
+          <mat-form-field appearance="fill">
+            <mat-icon matPrefix>book</mat-icon>
+            <mat-label>Discipline</mat-label>
+            <input
+              type="text"
+              matInput
+              formControlName="discipline"
+              [matAutocomplete]="auto">
+            <mat-autocomplete #auto="matAutocomplete">
+              <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+                {{ option }}
+              </mat-option>
+            </mat-autocomplete>
+          </mat-form-field>
+          <mat-form-field appearance="fill">
+            <mat-icon matPrefix>library_books</mat-icon>
+            <mat-label>Course</mat-label>
+            <input
+              type="text"
+              matInput
+              formControlName="course"
+              [matAutocomplete]="auto">
+            <mat-autocomplete #auto="matAutocomplete">
+              <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+                {{ option }}
+              </mat-option>
+            </mat-autocomplete>
+          </mat-form-field>
+        </form>
+      </div>
+      <div class="action-section">
+        <button class="action-btn confirm-btn cursor-pointer" (click)="validateCollegeDetails()">Continue</button>
+      </div>
+    </div>
+
+  </div>
+</div>

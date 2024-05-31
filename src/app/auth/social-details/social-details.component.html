@@ -1,0 +1,84 @@
+<div class="container-fluid main-body">
+  <div class="main-container">
+    <div class="col-12 col-md-6 image-container">
+      <div class="images-group d-flex flex-row">
+      <div class="d-flex flex-column img-group img-group-1" #imgGroup1>
+        <div class="img">
+          <img src="https://source.unsplash.com/random/200x300" alt="">
+        </div>
+        <div class="img">
+          <img src="https://source.unsplash.com/random/200x300" alt="">
+        </div>
+        <div class="img">
+          <img src="https://source.unsplash.com/random/200x300" alt="">
+        </div>
+        <div class="img">
+          <img src="https://source.unsplash.com/random/200x300" alt="">
+        </div>
+      </div>
+      <div class="d-flex flex-column img-group img-group-2" #imgGroup2>
+        <div class="img">
+          <img src="https://source.unsplash.com/random/200x300" alt="">
+        </div>
+        <div class="img">
+          <img src="https://source.unsplash.com/random/200x300" alt="">
+        </div>
+        <div class="img">
+          <img src="https://source.unsplash.com/random/200x300" alt="">
+        </div>
+        <div class="img">
+          <img src="https://source.unsplash.com/random/200x300" alt="">
+        </div>
+      </div>
+      <div class="d-flex flex-column img-group img-group-3" #imgGroup3>
+        <div class="img">
+          <img src="https://source.unsplash.com/random/200x300" alt="">
+        </div>
+        <div class="img">
+          <img src="https://source.unsplash.com/random/200x300" alt="">
+        </div>
+        <div class="img">
+          <img src="https://source.unsplash.com/random/200x300" alt="">
+        </div>
+        <div class="img">
+          <img src="https://source.unsplash.com/random/200x300" alt="">
+        </div>
+      </div>
+    </div>
+    </div>
+    <div class="col-12 col-md-6 form-container">
+      <div class="header">
+        <div class="progress-bar">
+          <div class="progress-fill" style="width: 95%;"></div>
+        </div>
+        <div class="header-text">
+          Finishing up...
+          <div class="sub-header">
+            one last bit of information we need...
+          </div>
+        </div>
+        <div class="form-area">
+          <form [formGroup]="otpForm">
+            <mat-form-field appearance="fill">
+              <mat-label>Phone number</mat-label>
+              <mat-icon matPrefix>phone</mat-icon>
+              <input matInput placeholder="Enter your phone number" formControlName="phoneNumber" type="number" maxlength="10">
+              <mat-error *ngIf="otpForm.get('phoneNumber')?.invalid && (otpForm.get('phoneNumber')?.dirty || otpForm.get('phoneNumber')?.touched)">
+
+              </mat-error>
+            </mat-form-field>
+
+            <ng-otp-input *ngIf="otpSent" (onInputChange)="onOtpChange($event)"  [config]="{length:6}"></ng-otp-input>
+          </form>
+        </div>
+      </div>
+
+      <div class="action-section">
+        <button *ngIf="!otpSent" class="action-btn confirm-btn cursor-pointer" (click)="sendOtp()">Send OTP</button>
+        <button *ngIf="otpSent" class="action-btn confirm-btn cursor-pointer" (click)="verifyMobile()">Verify Mobile</button>
+        <button *ngIf="otpSent" class="action-btn confirm-btn cursor-pointer" (click)="sendOtp()">Resend OTP</button>
+      </div>
+    </div>
+
+  </div>
+</div>

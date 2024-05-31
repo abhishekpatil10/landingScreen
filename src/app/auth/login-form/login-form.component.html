@@ -1,0 +1,109 @@
+<div class="container-fluid main-body">
+  <div class="main-container">
+    <div class="col-12 col-md-6 image-container">
+      <div class="images-group d-flex flex-row">
+      <div class="d-flex flex-column img-group img-group-1" #imgGroup1>
+        <div class="img">
+          <img src="https://source.unsplash.com/random/200x300" alt="">
+        </div>
+        <div class="img">
+          <img src="https://source.unsplash.com/random/200x300" alt="">
+        </div>
+        <div class="img">
+          <img src="https://source.unsplash.com/random/200x300" alt="">
+        </div>
+        <div class="img">
+          <img src="https://source.unsplash.com/random/200x300" alt="">
+        </div>
+      </div>
+      <div class="d-flex flex-column img-group img-group-2" #imgGroup2>
+        <div class="img">
+          <img src="https://source.unsplash.com/random/200x300" alt="">
+        </div>
+        <div class="img">
+          <img src="https://source.unsplash.com/random/200x300" alt="">
+        </div>
+        <div class="img">
+          <img src="https://source.unsplash.com/random/200x300" alt="">
+        </div>
+        <div class="img">
+          <img src="https://source.unsplash.com/random/200x300" alt="">
+        </div>
+      </div>
+      <div class="d-flex flex-column img-group img-group-3" #imgGroup3>
+        <div class="img">
+          <img src="https://source.unsplash.com/random/200x300" alt="">
+        </div>
+        <div class="img">
+          <img src="https://source.unsplash.com/random/200x300" alt="">
+        </div>
+        <div class="img">
+          <img src="https://source.unsplash.com/random/200x300" alt="">
+        </div>
+        <div class="img">
+          <img src="https://source.unsplash.com/random/200x300" alt="">
+        </div>
+      </div>
+    </div>
+    </div>
+    <div class="col-12 col-md-6 form-container">
+      <div class="form-body">
+        <div class="logo-container">
+          <img src="../../../assets/images/logo.svg" alt="" srcset="">
+        </div>
+        <div class="header">
+        <div class="header-text">
+          Login
+        </div>
+        <div class="sub-header">
+          Login with email
+        </div>
+      </div>
+      <div class="form-area">
+        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="login-form">
+          <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" id="email" formControlName="email" class="form-control">
+            <div *ngIf="email?.invalid && (email?.dirty || email?.touched)" class="error-message">
+              <div *ngIf="email?.errors!['required']">Email is required.</div>
+              <div *ngIf="email?.errors!['email']">Please enter a valid email.</div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="password">Password:</label>
+            <div class="password-input">
+              <input type="{{ hide ? 'password' : 'text' }}" id="password" formControlName="password" class="form-control">
+              <span (click)="togglePassword()" class="toggle-password">
+                <i class="fa" [ngClass]="{'fa-eye': hide, 'fa-eye-slash': !hide}"></i>
+              </span>
+            </div>
+            <div *ngIf="password?.invalid && (password?.dirty || password?.touched)" class="error-message">
+              <div *ngIf="password?.errors!['required']">Password is required.</div>
+              <div *ngIf="password?.errors!['minlength']">Password must be at least 8 characters long.</div>
+            </div>
+            <div><a href="#" class="forgot-password">Forgot Password?</a></div>
+          </div>
+          <button type="submit" [disabled]="loginForm.invalid" class="action-btn login cursor-pointer">{{LoginBtnText}}</button>
+        </form>
+        <div class="bottom">
+          <div class="sign-on-section">
+            <div class="singin-icons">
+              <img src="../../../assets/images/google-icon.svg" alt="">
+              <img src="../../../assets/images/apple-icon.svg" alt="">
+            </div>
+          </div>
+          <div class="dont-have-account">
+            <div class="dont-have-account-text">
+              Don't have an account ?
+            </div>
+            <div class="dont-have-account-link">
+              <a routerLink="/signup-user" class="dont-have-account-link">Sign Up</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      </div>
+    </div>
+  </div>
+</div>

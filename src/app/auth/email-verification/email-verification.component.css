@@ -1,0 +1,54 @@
+@media (max-width: 768px) {
+  .image-container {
+    display: none;
+  }
+}
+.form-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3rem;
+  height: 100vh;
+  background: var(--green-gradient-color);
+}
+
+.main-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.img-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.img {
+  margin-bottom: 10px;
+}
+
+.link-verfication {
+  font-family: Lato;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 24px;
+  letter-spacing: -0.025em;
+  text-align: center;
+  color: #FFFFFFE0;
+}
+.action-section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  flex-direction: column;
+  width: 100%;
+  max-width: 400px;
+}
+
+.confirm-btn {
+  background-color: var(--white-font-color);
+  color: var(--black-font-color);
+  border: none;
+
+}

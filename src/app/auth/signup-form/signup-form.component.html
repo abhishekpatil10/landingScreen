@@ -1,0 +1,130 @@
+<div class="container-fluid main-body">
+  <div class="main-container">
+    <div class="col-12 col-md-6 image-container">
+      <div class="images-group d-flex flex-row">
+      <div class="d-flex flex-column img-group img-group-1" #imgGroup1>
+        <div class="img">
+          <img src="https://source.unsplash.com/random/200x300" alt="">
+        </div>
+        <div class="img">
+          <img src="https://source.unsplash.com/random/200x300" alt="">
+        </div>
+        <div class="img">
+          <img src="https://source.unsplash.com/random/200x300" alt="">
+        </div>
+        <div class="img">
+          <img src="https://source.unsplash.com/random/200x300" alt="">
+        </div>
+      </div>
+      <div class="d-flex flex-column img-group img-group-2" #imgGroup2>
+        <div class="img">
+          <img src="https://source.unsplash.com/random/200x300" alt="">
+        </div>
+        <div class="img">
+          <img src="https://source.unsplash.com/random/200x300" alt="">
+        </div>
+        <div class="img">
+          <img src="https://source.unsplash.com/random/200x300" alt="">
+        </div>
+        <div class="img">
+          <img src="https://source.unsplash.com/random/200x300" alt="">
+        </div>
+      </div>
+      <div class="d-flex flex-column img-group img-group-3" #imgGroup3>
+        <div class="img">
+          <img src="https://source.unsplash.com/random/200x300" alt="">
+        </div>
+        <div class="img">
+          <img src="https://source.unsplash.com/random/200x300" alt="">
+        </div>
+        <div class="img">
+          <img src="https://source.unsplash.com/random/200x300" alt="">
+        </div>
+        <div class="img">
+          <img src="https://source.unsplash.com/random/200x300" alt="">
+        </div>
+      </div>
+    </div>
+    </div>
+    <div class="col-12 col-md-6 form-container">
+      <div class="form-body">
+        <div class="logo-container">
+          <img src="../../../assets/images/logo.svg" alt="" srcset="">
+        </div>
+        <div class="header">
+        <div class="header-text">
+          Sign Up
+        </div>
+        <div class="sub-header">
+          Continue signing up with email or one of the following options
+        </div>
+      </div>
+      <div class="form-area">
+        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="login-form">
+          <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" id="email" formControlName="email" class="form-control">
+            <div *ngIf="email?.invalid && (email?.dirty || email?.touched)" class="error-message">
+              <div *ngIf="email?.errors!['required']">Email is required.</div>
+              <div *ngIf="email?.errors!['email']">Please enter a valid email.</div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="password">Password:</label>
+            <div class="password-input">
+              <input type="{{ hide ? 'password' : 'text' }}" id="password" formControlName="password" class="form-control">
+              <span (click)="togglePassword()" class="toggle-password">
+                <i class="fa" [ngClass]="{'fa-eye': hide, 'fa-eye-slash': !hide}"></i>
+              </span>
+            </div>
+            <div class="hint-text mt-2">8 Characters, 1 uppercase, 1 number</div>
+            <div *ngIf="password?.invalid && (password?.dirty || password?.touched)" class="error-message">
+              <div *ngIf="password?.errors!['required']">Password is required.</div>
+              <div *ngIf="password?.errors!['minlength']">Password must be at least 8 characters long.</div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="repeatPassword">Re-enter password:</label>
+            <div class="password-input">
+              <input type="{{ hide ? 'password' : 'text' }}" id="repeatPassword" formControlName="repeatPassword" class="form-control">
+              <span (click)="togglePassword()" class="toggle-password">
+                <i class="fa" [ngClass]="{'fa-eye': hide, 'fa-eye-slash': !hide}"></i>
+              </span>
+            </div>
+            <div *ngIf="repeatPassword?.invalid && (repeatPassword?.dirty || repeatPassword?.touched)" class="error-message">
+              <div *ngIf="repeatPassword?.errors!['required']">Repeat password is required.</div>
+              <div *ngIf="loginForm?.value.password !== loginForm?.value.repeatPassword">Passwords do not match.</div>
+            </div>
+          </div>
+
+          <button type="submit" [disabled]="loginForm.invalid" class="action-btn login cursor-pointer">Create account</button>
+        </form>
+        <div class="seperator">
+          <svg width="264" height="9" viewBox="0 0 264 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M1 4H122.5" stroke="white" stroke-opacity="0.5" stroke-linecap="round"/>
+            <path d="M129.646 2.302C130.06 2.302 130.434 2.36983 130.768 2.5055C131.105 2.64117 131.391 2.83367 131.626 3.083C131.864 3.33233 132.048 3.63483 132.176 3.9905C132.304 4.34617 132.369 4.74583 132.369 5.1895C132.369 5.63317 132.304 6.03283 132.176 6.3885C132.048 6.74417 131.864 7.0485 131.626 7.3015C131.391 7.55083 131.105 7.74333 130.768 7.879C130.434 8.01467 130.06 8.0825 129.646 8.0825C129.228 8.0825 128.85 8.01467 128.513 7.879C128.179 7.74333 127.893 7.55083 127.655 7.3015C127.417 7.0485 127.233 6.74417 127.105 6.3885C126.977 6.03283 126.913 5.63317 126.913 5.1895C126.913 4.74583 126.977 4.34617 127.105 3.9905C127.233 3.63483 127.417 3.33233 127.655 3.083C127.893 2.83367 128.179 2.64117 128.513 2.5055C128.85 2.36983 129.228 2.302 129.646 2.302ZM129.646 7.1585C130.152 7.1585 130.528 6.98983 130.774 6.6525C131.023 6.3115 131.148 5.82567 131.148 5.195C131.148 4.56433 131.023 4.0785 130.774 3.7375C130.528 3.39283 130.152 3.2205 129.646 3.2205C129.133 3.2205 128.751 3.39283 128.502 3.7375C128.253 4.0785 128.128 4.56433 128.128 5.195C128.128 5.82567 128.253 6.3115 128.502 6.6525C128.751 6.98983 129.133 7.1585 129.646 7.1585ZM134.969 3.4295C135.145 3.07383 135.357 2.79517 135.607 2.5935C135.856 2.38817 136.155 2.2855 136.503 2.2855C136.624 2.2855 136.738 2.30017 136.844 2.3295C136.95 2.35517 137.046 2.3955 137.13 2.4505L137.048 3.3415C137.033 3.40383 137.009 3.44783 136.976 3.4735C136.947 3.4955 136.906 3.5065 136.855 3.5065C136.8 3.5065 136.721 3.49733 136.619 3.479C136.516 3.457 136.408 3.446 136.294 3.446C136.129 3.446 135.982 3.46983 135.854 3.5175C135.729 3.56517 135.616 3.63483 135.513 3.7265C135.414 3.81817 135.326 3.93 135.249 4.062C135.172 4.194 135.101 4.34433 135.035 4.513V8H133.852V2.39H134.54C134.664 2.39 134.75 2.41383 134.798 2.4615C134.846 2.5055 134.879 2.58433 134.897 2.698L134.969 3.4295Z" fill="white" fill-opacity="0.88"/>
+            <path d="M141.5 4H263" stroke="white" stroke-opacity="0.5" stroke-linecap="round"/>
+            </svg>
+        </div>
+        <div class="bottom">
+          <div class="sign-on-section">
+            <div class="singin-icons">
+              <img src="../../../assets/images/google-icon.svg" alt="">
+              <img src="../../../assets/images/apple-icon.svg" alt="">
+            </div>
+          </div>
+          <div class="dont-have-account">
+            <div class="dont-have-account-text">
+              Already have an account ?
+            </div>
+            <div class="dont-have-account-link">
+              <a routerLink="/login-user" class="dont-have-account-link">Login</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      </div>
+    </div>
+  </div>
+</div>

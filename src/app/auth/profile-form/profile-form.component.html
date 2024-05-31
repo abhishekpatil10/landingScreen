@@ -1,0 +1,119 @@
+<div class="container-fluid main-body">
+  <div class="main-container">
+    <div class="col-12 col-md-6 image-container">
+      <div class="images-group d-flex flex-row">
+      <div class="d-flex flex-column img-group img-group-1" #imgGroup1>
+        <div class="img">
+          <img src="https://source.unsplash.com/random/200x300" alt="">
+        </div>
+        <div class="img">
+          <img src="https://source.unsplash.com/random/200x300" alt="">
+        </div>
+        <div class="img">
+          <img src="https://source.unsplash.com/random/200x300" alt="">
+        </div>
+        <div class="img">
+          <img src="https://source.unsplash.com/random/200x300" alt="">
+        </div>
+      </div>
+      <div class="d-flex flex-column img-group img-group-2" #imgGroup2>
+        <div class="img">
+          <img src="https://source.unsplash.com/random/200x300" alt="">
+        </div>
+        <div class="img">
+          <img src="https://source.unsplash.com/random/200x300" alt="">
+        </div>
+        <div class="img">
+          <img src="https://source.unsplash.com/random/200x300" alt="">
+        </div>
+        <div class="img">
+          <img src="https://source.unsplash.com/random/200x300" alt="">
+        </div>
+      </div>
+      <div class="d-flex flex-column img-group img-group-3" #imgGroup3>
+        <div class="img">
+          <img src="https://source.unsplash.com/random/200x300" alt="">
+        </div>
+        <div class="img">
+          <img src="https://source.unsplash.com/random/200x300" alt="">
+        </div>
+        <div class="img">
+          <img src="https://source.unsplash.com/random/200x300" alt="">
+        </div>
+        <div class="img">
+          <img src="https://source.unsplash.com/random/200x300" alt="">
+        </div>
+      </div>
+    </div>
+    </div>
+    <div class="col-12 col-md-6 form-container">
+      <div class="header">
+        <div class="progress-bar">
+          <div class="progress-fill" style="width: 5%;"></div>
+        </div>
+        <div class="header-text">
+          Help us know you better.
+          <div class="sub-header">
+            Some basic information about you.
+          </div>
+        </div>
+      </div>
+      <div class="form-area">
+        <form [formGroup]="profileForm" class="profile-form">
+          <mat-form-field appearance="fill" class="form-field">
+            <mat-label>Full Name </mat-label>
+            <input matInput formControlName="fullName" placeholder="Full Name">
+            <mat-error *ngIf="profileForm.get('fullName')?.invalid && (profileForm.get('fullName')?.dirty || profileForm.get('fullName')?.touched)">
+              <div *ngIf="profileForm.get('fullName')?.errors?.['required']">Full Name is required.</div>
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field appearance="fill" class="form-field">
+            <mat-label>Instagram handle </mat-label>
+            <input matInput formControlName="igHandle" placeholder="Full Name">
+            <mat-error *ngIf="profileForm.get('igHandle')?.invalid && (profileForm.get('igHandle')?.dirty || profileForm.get('igHandle')?.touched)">
+              <div *ngIf="profileForm.get('igHandle')?.errors?.['required']">Instagram handle is required.</div>
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field appearance="fill" class="form-field">
+            <mat-label>Date of Birth </mat-label>
+            <input matInput [max]="minDate" [matDatepicker]="picker"  formControlName="dateOfBirth" placeholder="MM/DD/YYYY">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+            <mat-error *ngIf="profileForm.get('dateOfBirth')?.invalid && (profileForm.get('dateOfBirth')?.dirty || profileForm.get('dateOfBirth')?.touched)">
+              <div *ngIf="profileForm.get('dateOfBirth')?.errors?.['required']">Date of Birth is required.</div>
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field appearance="fill" class="form-field">
+            <mat-label>Gender </mat-label>
+            <mat-select formControlName="gender">
+              <mat-option value="" disabled>Select Gender</mat-option>
+              <mat-option value="male">Male</mat-option>
+              <mat-option value="female">Female</mat-option>
+              <mat-option value="other">Other</mat-option>
+            </mat-select>
+            <mat-error *ngIf="profileForm.get('gender')?.invalid && (profileForm.get('gender')?.dirty || profileForm.get('gender')?.touched)">
+              <div *ngIf="profileForm.get('gender')?.errors?.['required']">Gender is required.</div>
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field appearance="fill" class="form-field">
+            <mat-label>Interests </mat-label>
+            <mat-select formControlName="interests" multiple>
+              <mat-option *ngFor="let interest of interests" [value]="interest">{{ interest }}</mat-option>
+            </mat-select>
+            <mat-error *ngIf="profileForm.get('interests')?.invalid && (profileForm.get('interests')?.dirty || profileForm.get('interests')?.touched)">
+              <div *ngIf="profileForm.get('interests')?.errors?.['required']">Interests are required.</div>
+            </mat-error>
+          </mat-form-field>
+        </form>
+      </div>
+      <div class="action-section">
+        <button class="action-btn confirm-btn cursor-pointer" (click)="validateProfileDetails()">Continue</button>
+      </div>
+    </div>
+
+  </div>
+</div>
